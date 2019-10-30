@@ -94,6 +94,21 @@ methods.PUT = async function(request) {
   return { status: 204 };
 };
 
+/*
+
+methods.MKCOL = function(path, respond) {
+  fs.stat(path, function(error, stats) {
+    if (error && error.code == "ENOENT")
+      fs.mkdir(path, respondErrorOrNothing(respond));
+    else if (error)
+      respond(500, error.toString());
+    else if (stats.isDirectory())
+      respond(204);
+    else
+      respond(400, "File exists");
+  });
+};
+
 const { mkdir } = require('fs').promises;
 const { existsSync } = require('fs');
 
@@ -107,6 +122,24 @@ methods.MKCOL = async function(request) {
   } catch (error) {
     throw error;
   }
+};
+
+*/
+
+const {mkdir} = require("fs").promises;
+
+methods.MKCOL = async function(request) {
+  let path = urlPath(request.url);
+  let stats;
+  try {
+    stats = await stat(path);
+  } catch (error) {
+    if (error.code != "ENOENT") throw error;
+    await mkdir(path);
+    return {status: 204};
+  }
+  if (stats.isDirectory()) return {status: 204};
+  else return {status: 400, body: "Not a directory"};
 };
 
 methods.OPTIONS = async function(request) {
