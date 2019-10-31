@@ -4,8 +4,10 @@ const { createServer } = require('http');
 
 const methods = Object.create(null);
 
+console.log("hello world!");
 createServer((request, response) => {
   let handler = methods[request.method] || notAllowed;
+  console.log("hi");
   handler(request)
     .catch(error => {
       if (error.status != null) return error;
