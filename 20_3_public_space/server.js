@@ -13,7 +13,7 @@ createServer((request, response) => {
     })
     .then(({ body, status = 200, type = 'text/plain' }) => {
       response.setHeader('Access-Control-Allow-Origin', '*');
-      response.setHeader('Access-Control-Allow-Methods', 'POST, PUT, GET, OPTIONS, DELETE');
+      response.setHeader('Access-Control-Allow-Methods', 'POST, PUT, GET, OPTIONS, DELETE, MKCOL');
       response.writeHead(status, { 'Content-Type': type });
       if (body && body.pipe) body.pipe(response);
       else response.end(body);
