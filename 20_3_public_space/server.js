@@ -4,10 +4,9 @@ const { createServer } = require('http');
 
 const methods = Object.create(null);
 
-console.log("hello world!");
 createServer((request, response) => {
   let handler = methods[request.method] || notAllowed;
-  console.log("hi");
+  console.log(`method= ${request.method} url=${request.url}`);
   handler(request)
     .catch(error => {
       if (error.status != null) return error;
@@ -44,7 +43,7 @@ function urlPath(url) {
 }
 
 const { createReadStream } = require('fs');
-const { stat, readdir } = require('fs').promises;
+const { stat, readdir, mkdir } = require('fs').promises;
 const mime = require('mime');
 
 methods.GET = async function(request) {
@@ -127,8 +126,6 @@ methods.MKCOL = async function(request) {
 };
 
 */
-
-const {mkdir} = require("fs").promises;
 
 methods.MKCOL = async function(request) {
   let path = urlPath(request.url);
