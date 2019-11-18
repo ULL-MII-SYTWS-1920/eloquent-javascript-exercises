@@ -5,7 +5,8 @@
   "main": "code.js",
   "scripts": {
     "test": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "debug": "node --inspect-brk server.js # open chrome at chrome://inspect"
   },
   "keywords": [],
   "author": "Casiano Rodriguez-Leon <casiano.rodriguez.leon@gmail.com> (https://github.com/crguezl)",
