@@ -36,7 +36,7 @@ var SkillShareServer = class SkillShareServer {
     });
   }
   start(port) {
-    this.server.listen(port);
+    this.server.listen(port, `Listening on port ${port}`);
   }
   stop() {
     this.server.close();

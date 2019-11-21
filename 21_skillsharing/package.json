@@ -3,6 +3,9 @@
           "version": "1.0.0",
           "main": "skillsharing_server.js",
           "description": "Skill-sharing website example from Eloquent JavaScript",
+          "scripts": {
+            "start": "nodemon skillsharing_server.js"
+          },
           "dependencies": {
                     "ecstatic": "^3.1.0"
           },
