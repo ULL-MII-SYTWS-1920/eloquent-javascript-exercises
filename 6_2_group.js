@@ -25,7 +25,7 @@ class Group {
     return this.list.indexOf(elt) !== -1;
   }
   static from(iterable) {
-    let result = new PGroup();
+    let result = new Group();
     for (const elt of iterable) {
       result.add(elt);
     }
@@ -36,7 +36,7 @@ class Group {
   }
 }
 
-let group = PGroup.from([10, 20]);
+let group = Group.from([10, 20]);
 console.log(group.has(10));
 // → true
 console.log(group.has(30));
@@ -46,7 +46,7 @@ group.delete(10);
 console.log(group.has(10));
 // → false
 
-for (let value of PGroup.from(['a', 'b', 'c'])) {
+for (let value of Group.from(['a', 'b', 'c'])) {
   console.log(value);
 }
 // → a
